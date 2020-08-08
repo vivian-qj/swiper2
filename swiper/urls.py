@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-
+from user import api as user_api#没有这个会报错，task没有被注册
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/user/verify', user_api.get_verity_code)
 ]
