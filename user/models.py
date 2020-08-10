@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from lib.orm import ModelMixin
 # Create your models here.
 
 class User(models.Model):
@@ -33,9 +34,20 @@ class User(models.Model):
             self._profile, _ = Profile.objects.get_or_create(id=self.id)
         return self._profile
 
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'nickname': self.nickname,
+            'sex': self.sex,
+            'phonenum': self.phonenum,
+
+            'avatar': self.avatar,
+            'location': self.location,
+            'age': self.age
+        }
 
 
-class Profile(models.Model):
+class Profile(models.Model, ModelMixin):
     SEX = (
         ('男', '男'),  # 第一项是记录在数据库里的
         ('女', '女')
