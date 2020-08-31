@@ -11,3 +11,9 @@ HY_SMS_PARAMS = {
     'mobile': None,
     'format': 'json'
 }
+
+#七牛云配置
+QN_ACCESS_KEY = '2DitSFNog1ueMoVMmKZKqLKUoz1By8qZNdwZS3V4'
+QN_SECRET_KEY =  'M6JqbRbOOZpQj_TmBN1dJ1-41rer4sd-1ErSoulG'
+QN_BUCKET_NAME = 'vivia' #创建的空间名
+QN_BASE_URL = 'http://qexzoeyxn.hd-bkt.clouddn.com'

@@ -17,7 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from user import api as user_api#没有这个会报错，task没有被注册
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api/user/verify', user_api.get_verity_code),
-    url(r'^api/user/login', user_api.login),
+    #url(r'^admin/', admin.site.urls),
+    url(r'^api/user/verify$', user_api.get_verity_code),
+    url(r'^api/user/login$', user_api.login),
+    url(r'^api/user/profile$', user_api.get_profile),
+    url(r'^api/user/profile/modify$', user_api.modify_profile),
+    url(r'^api/user/avatar/upload$', user_api.upload_avatar),
 ]
+
+#auto_play=true&dating_sex=男&id=1&location=武汉&max_dating_age= 45&max_distance=10&min_dating_age=18&min_distance=1&only_matche=true&vibration=true

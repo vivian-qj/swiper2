@@ -65,3 +65,5 @@ class Profile(models.Model, ModelMixin):
     vibration = models.BooleanField(default=True, verbose_name='是否开启震动')
     only_matche = models.BooleanField(default=True, verbose_name='是否让匹配的人看我的相册')
     auto_play = models.BooleanField(default=True, verbose_name='是否自动播放视频')
+
+
