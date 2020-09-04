@@ -22,9 +22,10 @@ class User(models.Model):
 
     @property
     def age(self):
-        today = datetime.date.today()
-        birth_date = datetime.date(self.birth_year, self.birth_month, self.birth_day)
-        return (today - birth_date).days//365
+        today = datetime.date.today().year
+        #birth_date = datetime.date(self.birth_year, self.birth_month, self.birth_day)
+        #return (today - birth_date).days//365
+        return today-self.birth_year
 
 
     @property

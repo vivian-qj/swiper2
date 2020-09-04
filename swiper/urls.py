@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^api/social/superlike$', social_api.superlike),
     url(r'^api/social/dislike$', social_api.dislike),
     url(r'^api/social/rewind$', social_api.rewind),
+    url(r'^api/social/friends$', social_api.friends),
 ]
 
 #auto_play=true&dating_sex=男&id=1&location=武汉&max_dating_age= 45&max_distance=10&min_dating_age=18&min_distance=1&only_matche=true&vibration=true
