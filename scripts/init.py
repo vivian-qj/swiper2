@@ -19,7 +19,7 @@ django.setup()
 
 #不配置环境，下面的user模块系统找不到
 from user.models import User
-#from vip.models import Vip, Permission, VipPermRelation
+from vip.models import Vip, Permission, VipPermRelation
 
 
 last_names = (
@@ -74,7 +74,7 @@ def create_robots(n):
         except django.db.utils.IntegrityError:#冲突的话
             pass
 
-'''
+
 def init_permission():
     #创建权限模型
     permission_names = [
@@ -129,14 +129,13 @@ def create_vip_perm_relations():
     VipPermRelation.objects.get_or_create(vip_id=vip3.id, perm_id=anylocation.id)
     VipPermRelation.objects.get_or_create(vip_id=vip3.id, perm_id=unlimit_like.id)
 
-'''
 
 
-if __name__ == '__main__':
-    create_robots(1000)
-    '''
-        init_permission()
+
+if __name__ == '__main__':#一般脚本执行写这个
+    #create_robots(1000)
+    init_permission()
     init_vip()
     create_vip_perm_relations()
-    '''
+
 

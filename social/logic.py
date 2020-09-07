@@ -20,6 +20,7 @@ def get_rcmd_users(user):#user = User.objects.get(id=1)
 def like(user, sid):
     '''喜欢一个用户右滑'''
     Swiped.mark(user.id, sid ,'like')
+    print('like')
     #检查被滑动着是否喜欢过自己
     if Swiped.is_like(sid,user.id):
         Friend.be_friends(user.id, sid)#添加好友记录
@@ -38,7 +39,7 @@ def superlike(user, sid):
         return False
 
 
-def superlike(user, sid):
+def dislike(user, sid):
     '''不喜欢一个用户'''
     Swiped.mark(user.id, sid, 'dislike')
 

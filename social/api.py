@@ -3,6 +3,7 @@ from lib.http import render_json
 
 from social import logic
 from social.models import Friend
+from vip.logic import perm_require
 # Create your views here.
 
 def get_users(request):
@@ -24,11 +25,13 @@ def like(request):
     is_matched = logic.like(request.user, sid)#是否完成了匹配
     return render_json({'is_matched': is_matched})
 
+@perm_require('superlike')#完全可以不用修改原函数，直接在上面加上装饰器实现权限功能；若是不用权限直接注释
 def superlike(request):
     '''超级喜欢'''
     sid = int(request.POST.get('sid'))
     is_matched = logic.superlike(request.user, sid)  # 是否完成了匹配
     return render_json({'is_matched': is_matched})
+
 
 def dislike(request):
     '''不喜欢'''
@@ -36,6 +39,7 @@ def dislike(request):
     logic.dislike(request.user, sid)  # 是否完成了匹配
     return render_json(None)
 
+@perm_require('rewind')
 def rewind(request):
     '''反悔'''
     sid = int(request.POST.get('sid'))

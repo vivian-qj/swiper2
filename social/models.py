@@ -27,7 +27,7 @@ class Swiped(models.Model):
     @classmethod
     def is_like(cls, uid, sid):
         '''检查你喜欢的是否喜欢你'''
-        cls.objects.filter(uid=uid,sid=sid, #uid = sid调用的时候反着写，不然别扭
+        return  cls.objects.filter(uid=uid,sid=sid, #uid = sid调用的时候反着写，不然别扭
                            status__in=['like','superlike']).exists()#看它村不存在
 
 
@@ -39,7 +39,7 @@ class Friend(models.Model):
     def be_friends(cls, uid1, uid2):
         '''成为好友'''
         uid1, uid2 = (uid1, uid2) if uid1 < uid2 else (uid2, uid1)
-        cls.objects.get_or_create(uid1=uid1)
+        cls.objects.get_or_create(uid1=uid1, uid2=uid2)
 
     @classmethod
     def is_friend(cls, uid1, uid2):

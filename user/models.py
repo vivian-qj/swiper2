@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 from lib.orm import ModelMixin
+from vip.models import Vip
 # Create your models here.
 
 class User(models.Model):
@@ -20,6 +21,8 @@ class User(models.Model):
     birth_month = models.IntegerField(default=1)
     birth_day = models.IntegerField(default=1)
 
+    vip_id = models.IntegerField(default=1)#在多的下增加
+
     @property
     def age(self):
         today = datetime.date.today().year
@@ -34,6 +37,13 @@ class User(models.Model):
         if not hasattr(self, '_profile'): #等价于self._profile not in self.__dict__
             self._profile, _ = Profile.objects.get_or_create(id=self.id)
         return self._profile
+
+    @property
+    def vip(self):
+
+        if not hasattr(self, '_vip'):  # 等价于self._profile not in self.__dict__
+            self._vip = Vip.objects.get(id=self.vip_id)
+        return self._vip
 
     def to_dict(self):
         return {
